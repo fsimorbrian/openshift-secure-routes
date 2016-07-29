@@ -80,23 +80,12 @@ Vagrant.configure(2) do |config|
     echo
   SHELL
 
-  # config.vm.provision "ansible_local", run: "always" do |ansible|
-  #   ansible.groups = {
-  #       "local" => ["default"]
-  #   }
-  #   ansible.extra_vars = {
-  #       repository_dir: "/vagrant",
-  #   }
-  #   ansible.playbook = "Ansible/deploy.yml"
-  # end
-
   config.vm.provision "shell", run: "once", inline: <<-SHELL
     sudo -i -uvagrant oc new-project \
       "openshift-secure-routes" --display-name=secure-sample --description="example services to test secure routes"
 
     sudo -i -uvagrant oc new-app \
              registry.access.redhat.com/jboss-webserver-3/webserver30-tomcat8-openshift \
-            --strategy=docker \
             --name=mywebapp
 
     sudo -i -uvagrant oc new-app https://github.com/fsimorbrian/openshift-secure-routes \
