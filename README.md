@@ -30,7 +30,14 @@ Example of secure route in openshift
 
 1. Build a VM with Atomic as base OS, Install OpenShift.
 
-2. Run
+2. Download and install OpenShift CLI locally from [Get Started with CLI](https://docs.openshift.com/enterprise/latest/cli_reference/get_started_cli.html) 
+
+3. Run the `oc` commands to configure new project and services.
+
+        oc login https://<host-or-ip-of-openshift-on-atomic>:8443
+        oc new-project "openshift-secure-routes" --display-name=secure-sample --description="example services to test secure routes"
+        oc new-app registry.access.redhat.com/jboss-webserver-3/webserver30-tomcat8-openshift --name=mywebapp
+        oc new-app https://github.com/fsimorbrian/openshift-secure-routes --context-dir=nginx --strategy=docker --name=mynginx
 
 5. Connect to OpenShift on the just built Atomic OpenShift VM.
 
@@ -42,6 +49,9 @@ Example of secure route in openshift
 1. Connect to the OpenShift host you want to test (Atomic or Vagrant IP)
 
 2. Click **secure-sample** project in the OpenShift Console.
+
+        If services aren't done building, wait for them.
+        Each service should have a full *blue circle* around the word *1 pod*
 
 3. Click **Create Route** on upper right of **mynginx** service.
 
