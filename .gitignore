@@ -1,12 +1,39 @@
-*.class
+.vagrant/
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+*.iws
+.DS_Store
+log/
+target/
+*.swp
+dependency-reduced-pom.xml
+*.log
+*.out
+*.pid
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# IntelliJ specific files/directories
+#
+# wng
+out
+*.ipr
+atlassian-ide-plugin.xml
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# Atlassian Clover
+.cloverhistory
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+#JavaScript Test Results
+test-results.xml
+
+#Precompile output
+.sass_cache
+gidgets_nusp/src/main/webapp/src/css/*.css
+
+# npm/bower
+bower_components
+node_modules
