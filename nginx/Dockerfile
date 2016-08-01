@@ -1,7 +1,5 @@
 FROM registry-nginxinc.rhcloud.com/nginx/rhel7-nginx:1.9.2
 
-#COPY cert.crt /etc/nginx/
-#COPY cert.key /etc/nginx/
 COPY default.conf /etc/nginx/conf.d/
 RUN mkdir /etc/nginx/ca
 RUN mkdir /etc/nginx/pki
@@ -13,6 +11,6 @@ RUN openssl x509 -req -in /etc/nginx/pki/server.req -out /etc/nginx/pki/server.c
 #RUN openssl pkcs12 -export -out /etc/nginx/pki/server.p12 -inkey /etc/nginx/pki/server.key -in /etc/nginx/pki/server.cer -certfile /etc/nginx/ca/ca.cer
 
 #
-#RUN chmod -R 777 /var/log/nginx /var/cache/nginx/ \
-#	&& chmod -R 777 /var/run \
-#	&& chmod 644 /etc/nginx/*
+RUN chmod -R 777 /var/log/nginx /var/cache/nginx/ \
+	&& chmod -R 777 /var/run \
+	&& chmod 644 /etc/nginx/*
