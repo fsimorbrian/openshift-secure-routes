@@ -10,7 +10,7 @@ RUN openssl req -new -out /etc/nginx/pki/server.req -key /etc/nginx/pki/server.k
 RUN openssl x509 -req -in /etc/nginx/pki/server.req -out /etc/nginx/pki/server.cer -CAkey /etc/nginx/ca/ca.key -CA /etc/nginx/ca/ca.cer -days 365 -CAcreateserial -CAserial serial
 #RUN openssl pkcs12 -export -out /etc/nginx/pki/server.p12 -inkey /etc/nginx/pki/server.key -in /etc/nginx/pki/server.cer -certfile /etc/nginx/ca/ca.cer
 
-#
+# this chmod line is required on atomic but not on CDK - researching why
 RUN chmod -R 777 /var/log/nginx /var/cache/nginx/ \
 	&& chmod -R 777 /var/run \
-	&& chmod 644 /etc/nginx/*
+	&& chmod -R 777 /etc/nginx/*
