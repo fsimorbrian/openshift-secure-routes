@@ -60,7 +60,7 @@ Example of secure route in openshift
         Name: mynginx
         Hostname: nginx.morbrian.com
         Path: /
-        Target Port: 443 --> 443 (TCP)
+        Target Port: 8443 --> 8443 (TCP)
         Expanded options for secured routes:
         TLS Termination: Passthrough
         
