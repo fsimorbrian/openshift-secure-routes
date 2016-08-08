@@ -13,13 +13,13 @@ RUN openssl x509 -req -in /etc/nginx/pki/server.req -out /etc/nginx/pki/server.c
 # based on recommendations from https://docs.openshift.org/latest/creating_images/guidelines.html
 # OpenShift Origin Specific Guidelines (which should also apply to OpenShift)
 # this chmod line is required on atomic but not on CDK - researching why
-#RUN chgrp -R 0 /var/log/nginx /var/cache/nginx /var/run /etc/nginx
-#RUN chmod -R g+rw /var/log/nginx /var/cache/nginx /var/run /etc/nginx
-#RUN find /var/log/nginx /var/cache/nginx /var/run /etc/nginx -type d -exec chmod g+x {} +
+RUN chgrp -R 0 /var/log/nginx /var/cache/nginx /var/run /etc/nginx
+RUN chmod -R g+rw /var/log/nginx /var/cache/nginx /var/run /etc/nginx
+RUN find /var/log/nginx /var/cache/nginx /var/run /etc/nginx -type d -exec chmod g+x {} +
 
 # this chmod line is required on atomic but not on CDK - researching why (moriarty)
-RUN chmod -R 777 /var/log/nginx /var/cache/nginx/ \
-       && chmod -R 777 /var/run \
-       && chmod -R 777 /etc/nginx/*
+#RUN chmod -R 777 /var/log/nginx /var/cache/nginx/ \
+#       && chmod -R 777 /var/run \
+#       && chmod -R 777 /etc/nginx/*
 
 EXPOSE 8443
